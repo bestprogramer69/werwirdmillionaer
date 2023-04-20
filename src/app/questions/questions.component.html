@@ -1,0 +1,54 @@
+<table>
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Frage</th>
+            <th>falscheAntwort1</th>
+            <th>falscheAntwort2</th>
+            <th>falscheAntwort3</th>
+            <th>richtigeAntwort</th>
+            <th>Edit/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let question of questions; let i = index;">
+            <td>
+                <select type="text" [disabled]="editingIndex !== i" [(ngModel)]="question.kategorien_id">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+            </td>
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="question.frage"></td>
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="getAnswerById(question.falscheAntwort1).antwort"></td>
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="getAnswerById(question.falscheAntwort2).antwort"></td>
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="getAnswerById(question.falscheAntwort3).antwort"></td>
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="getAnswerById(question.richtigeAntwort).antwort"></td>
+            <td>
+                <div style="display: flex; align-items: center;">
+                    <button *ngIf="editingIndex !== i" (click)="startEditing(i)"><i class="fas fa-edit"></i></button>
+                    <button [disabled]="!isComplete(questions[editingIndex])" *ngIf="editingIndex === i" (click)="saveEditing(questions[editingIndex])"><i class="fas fa-save"></i></button>
+                    <button id="deleteButton" (click)=" deleteScore(question) "><i class="fas fa-trash-alt "></i></button>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="addingQuestion ">
+            <td>
+                <select [(ngModel)]="newQuestion.kategorien_id ">
+                    <option *ngFor="let category of categories " [value]="category.id ">{{ category.name }}</option>
+                  </select>
+            </td>
+            <td><input type="text " [(ngModel)]="newQuestion.frage "></td>
+            <td><input type="text " [(ngModel)]="newQuestion.falscheAntwort1 "></td>
+            <td><input type="text " [(ngModel)]="newQuestion.falscheAntwort2 "></td>
+            <td><input type="text " [(ngModel)]="newQuestion.falscheAntwort3 "></td>
+            <td><input type="text " [(ngModel)]="newQuestion.richtigeAntwort "></td>
+            <td>
+                <button [disabled]="!isSaveEnabled() " (click)="saveQuestion() "><i class="fas fa-save "></i></button>
+                <button id="deleteButton" (click)="cancelAddingQuestion() ">
+                    <i class="fas fa-times "></i>
+                  </button>
+            </td>
+        </tr>
+
+    </tbody>
+    <button class="add-question " *ngIf="!addingQuestion " (click)="addQuestion() "><i class="fas fa-plus "></i></button>
+</table>

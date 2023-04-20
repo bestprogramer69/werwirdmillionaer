@@ -1,0 +1,6 @@
+<div *ngIf="authorized">
+    <app-header pageTitle="Dashboard" (navItemSelected)="selectedNavItem=$event" [dashboard]="true"></app-header>
+    <app-high-scores *ngIf="selectedNavItem==='Highscore'"></app-high-scores>
+    <app-category *ngIf="selectedNavItem==='Categories'"></app-category>
+    <app-questions *ngIf="selectedNavItem==='Questions'"></app-questions>
+</div>

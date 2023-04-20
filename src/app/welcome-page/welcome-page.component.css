@@ -1,0 +1,54 @@
+.btn-start-game {
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.container {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+tr {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+button {
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    color: black;
+}

@@ -1,0 +1,60 @@
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    min-width: 700px;
+    margin: 0 auto;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    resize: horizontal;
+    overflow: auto;
+    background-color: #343a40;
+    color: #fff;
+}
+
+tr {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #e2e6ea;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+input[type="text"] {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+button:hover {
+    color: #c82333;
+}
+
+.fa-trash-alt {
+    font-size: 1.2rem;
+}

@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Edit/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories; let i = index;">
+            <td><input type="text" [disabled]="editingIndex !== i" [(ngModel)]="category.name"></td>
+            <td>
+                <button *ngIf="editingIndex !== i" (click)="startEditing(i)"><i class="fas fa-edit"></i></button>
+                <button [disabled]="!isComplete(category)" *ngIf="editingIndex === i" (click)="saveEditing(categories[editingIndex])"><i class="fas fa-save"></i></button>
+                <button id="deleteButton" (click)="deleteScore(categories[i].id)"><i class="fas fa-trash-alt"></i></button>
+            </td>
+
+        </tr>
+        <tr *ngIf="addingCategory">
+            <td><input type="text" [(ngModel)]="newCategory.name"></td>
+            <td>
+                <button [disabled]="!isSaveEnabled()" (click)="saveCategory()"><i class="fas fa-save"></i></button>
+                <button id="deleteButton" (click)="cancelAddingCategory()">
+                    <i class="fas fa-times"></i>
+                  </button>
+            </td>
+        </tr>
+
+    </tbody>
+    <button class="add-question " *ngIf="!addingCategory " (click)="addCateogry() "><i class="fas fa-plus "></i></button>
+</table>

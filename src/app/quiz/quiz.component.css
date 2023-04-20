@@ -1,0 +1,176 @@
+.answer-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.answer-button {
+    width: calc(50% - 10px);
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+.answer-button:hover {
+    background-color: #555;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1% 20px;
+}
+
+.player-name {
+    text-align: right;
+}
+
+.player-score {
+    text-align: left;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 2%;
+    margin-top: 20px;
+}
+
+.cash-out-button {
+    margin-left: 20px;
+}
+
+.button-container#next-button {
+    background-color: #0077cc;
+    color: #fff;
+    margin-right: auto;
+    font-size: 20px;
+    padding: 1% 2%;
+    border-radius: 10px;
+}
+
+.button-container#cash-out-button {
+    background-color: #114731;
+    color: #fff;
+    margin-left: auto;
+    font-size: 20px;
+    padding: 1% 2%;
+    border-radius: 10px;
+}
+
+button[disabled] {
+    background-color: lightgrey;
+    cursor: not-allowed;
+}
+
+.win-screen {
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.win-screen h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.win-screen button {
+    background-color: white;
+    color: green;
+    border: 2px solid green;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.win-screen button:hover {
+    background-color: green;
+    color: white;
+}
+
+.end-button {
+    background-color: #c0392b;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    margin-top: 16px;
+    padding: 10px 50px;
+}
+
+.end-button:hover {
+    background-color: #e74c3c;
+}
+
+.container {
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.progressbar {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.result-bar {
+    background-color: #ff0000;
+    border-radius: 10px;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.correct-bar {
+    background-color: green;
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+}
+
+.false-bar {
+    background-color: red;
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+}
+
+.result-text {
+    margin-top: 10px;
+}
+
+.result-text p {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.progressbar h1 {
+    text-align: center;
+}
+
+#correct-percentage {
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+#false-percentage {
+    display: inline-block;
+    width: 50px;
+    text-align: left;
+    margin-left: 10px;
+}

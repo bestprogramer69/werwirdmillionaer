@@ -1,0 +1,26 @@
+.nav-link {
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    py: 3;
+    mb: 4;
+    border-bottom: 1px solid #dee2e6;
+}
+
+h3 {
+    text-align: center;
+    margin: 0;
+    flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+    h3 {
+        flex: 0 1 auto;
+    }
+}

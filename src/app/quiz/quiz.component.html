@@ -1,0 +1,41 @@
+<app-header pageTitle="Quiz"></app-header>
+
+<div class="player-info">
+    <div class="player-name">Name: {{ playerdata.spieler }}</div>
+    <div class="player-score">punktzahl: {{ playerdata.punktzahl }}</div>
+</div>
+<div *ngIf="nextenabled || gameOver || win" class="progressbar">
+    <h1>Quiz Results</h1>
+    <div class="result-bar">
+        <div [ngStyle]="{width: percentRight + '%'}" class="correct-bar"></div>
+        <div [ngStyle]="{width: percentFalse + '%'}" class="false-bar"></div>
+    </div>
+    <div class="result-text">
+        <p><strong>Correct:</strong> <span id="correct-percentage"></span>{{percentRight}}%</p>
+        <p><strong>False:</strong> <span id="false-percentage"></span>{{percentFalse}}%</p>
+    </div>
+</div>
+<div class="container">
+    <h1>{{ currentQuestion.frage }}</h1>
+    <div class="answer-buttons">
+        <button class="answer-button" id="answer-{{currentAnswers[0].id}}" (click)="answerQuestion(currentAnswers[0])">{{currentAnswers[0].antwort}}</button>
+        <button class="answer-button" id="answer-{{currentAnswers[1].id}}" (click)="answerQuestion(currentAnswers[1])">{{currentAnswers[1].antwort}}</button>
+        <button class="answer-button" id="answer-{{currentAnswers[2].id}}" (click)="answerQuestion(currentAnswers[2])">{{currentAnswers[2].antwort}}</button>
+        <button class="answer-button" id="answer-{{currentAnswers[3].id}}" (click)="answerQuestion(currentAnswers[3])">{{currentAnswers[3].antwort}}</button>
+    </div>
+    <div class="button-container">
+        <button class="next-button" id="next-button" *ngIf="nextenabled && !win" (click)="nextQuestion()">Next</button>
+        <button class="next-button" id="next-button" *ngIf="!nextenabled && !jokerUsed && !gameOver && !win" (click)="Joker()">Joker</button>
+        <button *ngIf="gameOver" class="end-button" (click)="end()">End</button>
+        <button class="cash-out-button" id="cash-out-button" *ngIf="!gameOver && playerdata.punktzahl !== 0 && !win" (click)="cashOut()">Cash out</button>
+    </div>
+    <div *ngIf="gameOver">
+        <div class="container">
+            <h1>Game Over!</h1>
+        </div>
+    </div>
+</div>
+<div *ngIf="win" class="win-screen container">
+    <h1>You won!</h1>
+    <button class="end-button" (click)="playAgain()">Play Again</button>
+</div>

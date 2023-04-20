@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <app-header pageTitle="Welcome"></app-header>
+
+
+    <div class="container my-5">
+        <h1>Who wants to be a millionaire?</h1>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" class="form-control" [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="name">
+        </div>
+        <div class="form-group text-center">
+            <button type="button" class="btn btn-primary btn-start-game" (click)="startGame()">Start Game</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Place</th>
+                <th>Weighted Points</th>
+                <th>Category ID</th>
+                <th>Player</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Duration</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let highscore of highscores.slice(0,5) as any; let i = index;">
+                <td>{{i +1}}</td>
+                <td>{{highscore.weightedPoints}}</td>
+                <td>{{ highscore.kategorien_id }}</td>
+                <td>{{ highscore.spieler}}</td>
+                <td>{{ highscore.start | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+                <td>{{ highscore.ende | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+                <td>{{highscore.duration}}s</td>
+                <td>{{ highscore.punktzahl }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.1/dist/umd/popper.min.js" integrity="sha384-+sVxIo/vlHzHlZ7+pxL1TgDDTC0uTJQ2y7WdE1/nO6NJwCmPd5VjjQ2hJ7cgXlN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-1FJmAk0H7Dqfs2tyZk7uDlftGXv+cV7nXcR1yT8usSc/X0jb6rxIV/6PT39z6gC1" crossorigin="anonymous"></script>
+</body>
+
+</html>
