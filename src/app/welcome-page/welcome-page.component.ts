@@ -18,11 +18,11 @@ export class WelcomePageComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    const url = 'http://localhost:5000/categories';
+    const url = 'https://backendwerwirdmillionaer.azurewebsites.net/categories';
     this.http.get(url).subscribe((response) => {
       this.categories = response;
     });
-    this.http.get<Highscore[]>('http://localhost:5000/game').subscribe(data => {         
+    this.http.get<Highscore[]>('https://backendwerwirdmillionaer.azurewebsites.net/game').subscribe(data => {         
       const weightedData = [];
          for (let i = 0; i < data.length; i++) {
       const start = new Date(data[i].start).getTime();

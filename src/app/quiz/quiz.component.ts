@@ -41,8 +41,8 @@ export class QuizComponent implements OnInit{
       this.playerdata = JSON.parse(storedPlayerData);      
     }
       localStorage.setItem('gameStarted', `${true}`);
-    const url = 'http://localhost:5000/questions';
-    const answersUrl = 'http://localhost:5000/answer';
+    const url = 'https://backendwerwirdmillionaer.azurewebsites.net/questions';
+    const answersUrl = 'https://backendwerwirdmillionaer.azurewebsites.net/answer';
   
     forkJoin([
       this.http.get<Question[]>(url),
@@ -159,7 +159,7 @@ if (availableQuestionsString) {
     for (let i = 0; i < answerButtons.length; i++) {
       answerButtons[i].disabled = true;
     }
-    const urlQuestion = `http://localhost:5000/questions/${this.currentQuestion.id}`;
+    const urlQuestion = `https://backendwerwirdmillionaer.azurewebsites.net/questions/${this.currentQuestion.id}`;
     if (answer.id === this.currentQuestion.richtigeAntwort) {
       
       
@@ -225,7 +225,7 @@ const completepoints = this.pointsRight + this.pointsFalse;
       ...this.playerdata, 
       ende: formattedDateTime
     }    
-    this.http.post('http://localhost:5000/game',spiel).subscribe(() => {
+    this.http.post('https://backendwerwirdmillionaer.azurewebsites.net/game',spiel).subscribe(() => {
 
     }); 
     localStorage.removeItem('availableQuestions');
@@ -247,7 +247,7 @@ const completepoints = this.pointsRight + this.pointsFalse;
       ...this.playerdata, 
       ende: formattedDateTime
     }    
-    this.http.post('http://localhost:5000/game',spiel).subscribe(() => {
+    this.http.post('https://backendwerwirdmillionaer.azurewebsites.net/game',spiel).subscribe(() => {
     }); 
     localStorage.removeItem('availableQuestions');
     localStorage.removeItem('currentQuestionId');

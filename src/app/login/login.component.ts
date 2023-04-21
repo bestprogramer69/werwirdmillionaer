@@ -16,7 +16,7 @@ export class LoginComponent {
 
   login() {
     const hash = SHA256(this.password).toString();
-    this.http.get(`http://localhost:5000/login/${this.user}`).subscribe((data: any) => {     
+    this.http.get(`https://backendwerwirdmillionaer.azurewebsites.net/login/${this.user}`).subscribe((data: any) => {     
       if(!data){
         console.log('login not existing');
       }
