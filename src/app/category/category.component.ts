@@ -16,7 +16,7 @@ categories: any = [];
   };
 
   constructor(private http: HttpClient) {
-    this.http.get('http://localhost:5000/categories').subscribe(data => {
+    this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe(data => {
       this.categories = data;
     });
   }
@@ -32,13 +32,13 @@ categories: any = [];
   
 
   updateScore(score: any) {
-    const url = `http://localhost:5000/categories/${score.id}`;
+    const url = `https://backendwerwirdmillionaer.azurewebsites.net/categories/${score.id}`;
     this.http.put(url, score).subscribe(() => {
       console.log('Category updated successfully');
     });
   }
   deleteScore(id: any) {
-    const url = `http://localhost:5000/categories/${id}`;
+    const url = `https://backendwerwirdmillionaer.azurewebsites.net/categories/${id}`;
     this.http.delete(url).subscribe(() => {
       this.categories.splice(this.categories.indexOf(id), 1);
       console.log('Category deleted successfully');
@@ -51,7 +51,7 @@ categories: any = [];
 
   saveCategory() {
     
-      this.http.post('http://localhost:5000/categories', this.newCategory).subscribe(() => {
+      this.http.post('https://backendwerwirdmillionaer.azurewebsites.net/categories', this.newCategory).subscribe(() => {
         console.log('Question updated successfully');
       });
       this.categories.push(this.newCategory);

@@ -14,7 +14,7 @@ export class HighscoreComponent {
   editingIndex: number = -1;
 
   ngOnInit() {
-    this.http.get<Highscore[]>('http://localhost:5000/game').subscribe(data => {              
+    this.http.get<Highscore[]>('https://backendwerwirdmillionaer.azurewebsites.net/game').subscribe(data => {              
       const weightedData = [];
          for (let i = 0; i < data.length; i++) {
       const start = new Date(data[i].start).getTime();
@@ -40,7 +40,7 @@ export class HighscoreComponent {
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
   deleteScore(id: any) {    
-    const url = `http://localhost:5000/game/${id}`;
+    const url = `https://backendwerwirdmillionaer.azurewebsites.net/game/${id}`;
     this.http.delete(url).subscribe(() => {
       const index = this.highscores.findIndex((score: any) => score.id === id);
       if (index !== -1) {

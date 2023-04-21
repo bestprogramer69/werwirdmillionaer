@@ -30,18 +30,18 @@ export class QuestionsComponent {
   savingQuestion: boolean = false;;
 
   getanswers(){
-    this.http.get('http://localhost:5000/answer').subscribe((response) => {
+    this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/answer').subscribe((response) => {
       this.answers = response;
     });
   }
   getCategories(){
-  this.http.get('http://localhost:5000/categories').subscribe((response) => {
+  this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe((response) => {
       this.categories = response;
     });
   }
 
     getQuestions(){
-      this.http.get('http://localhost:5000/questions').subscribe(data => {
+      this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/questions').subscribe(data => {
         this.questions = data;
       });
     }
@@ -59,7 +59,7 @@ export class QuestionsComponent {
 
   saveEditing(score: any) {
     const editedQuestion = Object.assign({}, score);
-    const urlQuestion = `http://localhost:5000/questions/${editedQuestion.id}`;
+    const urlQuestion = `https://backendwerwirdmillionaer.azurewebsites.net/questions/${editedQuestion.id}`;
   
     this.http.put(urlQuestion, {
       kategorien_id: editedQuestion.kategorien_id,
@@ -74,7 +74,7 @@ export class QuestionsComponent {
       editedQuestion.richtigeAntwort
     ];
     for(let i = 0; i < editedAnswers.length; i++){
-      const url = `http://localhost:5000/answer/${editedAnswers[i]}`;
+      const url = `https://backendwerwirdmillionaer.azurewebsites.net/answer/${editedAnswers[i]}`;
       const newAnswer = this.answers.find((answer: {id: string}) => answer.id === editedAnswers[i]);
       this.http.put(url, newAnswer).subscribe(() => {
       });
@@ -93,13 +93,13 @@ export class QuestionsComponent {
       editedQuestion.falscheAntwort3,
       editedQuestion.richtigeAntwort
     ];
-    const urlQuestion = `http://localhost:5000/questions/${editedQuestion.id}`;
+    const urlQuestion = `https://backendwerwirdmillionaer.azurewebsites.net/questions/${editedQuestion.id}`;
   
     this.http.delete(urlQuestion).pipe(
       concatMap(() => {
         const deleteAnswerRequests = [];
         for (let i = 0; i < editedAnswers.length; i++) {
-          const url = `http://localhost:5000/answer/${editedAnswers[i]}`;
+          const url = `https://backendwerwirdmillionaer.azurewebsites.net/answer/${editedAnswers[i]}`;
           deleteAnswerRequests.push(this.http.delete(url));
         }
         return forkJoin(deleteAnswerRequests);
@@ -132,16 +132,16 @@ export class QuestionsComponent {
       countRight: 0,
       countFalse: 0,
     };
-    const obs1 = this.http.post<AnswerResponse>('http://localhost:5000/answer', {
+    const obs1 = this.http.post<AnswerResponse>('https://backendwerwirdmillionaer.azurewebsites.net/answer', {
       antwort: this.newQuestion.falscheAntwort1,
     });
-    const obs2 = this.http.post<AnswerResponse>('http://localhost:5000/answer', {
+    const obs2 = this.http.post<AnswerResponse>('https://backendwerwirdmillionaer.azurewebsites.net/answer', {
       antwort: this.newQuestion.falscheAntwort2,
     });
-    const obs3 = this.http.post<AnswerResponse>('http://localhost:5000/answer', {
+    const obs3 = this.http.post<AnswerResponse>('https://backendwerwirdmillionaer.azurewebsites.net/answer', {
       antwort: this.newQuestion.falscheAntwort3,
     });
-    const obs4 = this.http.post<AnswerResponse>('http://localhost:5000/answer', {
+    const obs4 = this.http.post<AnswerResponse>('https://backendwerwirdmillionaer.azurewebsites.net/answer', {
       antwort: this.newQuestion.richtigeAntwort,
     });
     
@@ -155,7 +155,7 @@ export class QuestionsComponent {
         falscheAntwort3: res3.id,
         richtigeAntwort: res4.id,
       }      
-      this.http.post('http://localhost:5000/questions',completequestion).subscribe(() => {
+      this.http.post('https://backendwerwirdmillionaer.azurewebsites.net/questions',completequestion).subscribe(() => {
       });
       this.getanswers();
       this.questions.push(completequestion);
