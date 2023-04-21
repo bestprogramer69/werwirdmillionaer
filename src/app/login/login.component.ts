@@ -18,9 +18,11 @@ export class LoginComponent {
     const hash = SHA256(this.password).toString();
     this.http.get(`https://backendwerwirdmillionaer.azurewebsites.net/login/${this.user}`).subscribe((data: any) => {     
       if(!data){
+        alert('login not existing')
         console.log('login not existing');
       }
       else if ( data[0].password !== hash) {
+        alert('incorrect login')
         console.log('incorrect login');
         return;
       }

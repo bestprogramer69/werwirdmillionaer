@@ -31,9 +31,7 @@ export class HighscoreComponent {
       weightedData.sort((a, b) => b.weightedPoints - a.weightedPoints);
       
       this.highscores = weightedData;
-    }
-    console.log(this.highscores);
-    
+    }    
   });
   }
 
