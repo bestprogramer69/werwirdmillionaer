@@ -27,8 +27,6 @@ export class WelcomePageComponent {
          for (let i = 0; i < data.length; i++) {
       const start = new Date(data[i].start).getTime();
       const end = new Date(data[i].ende).getTime(); 
-      console.log((end-start)/1000);
-      console.log(data[i].punktzahl);
       
       const weightedPoints = Math.round((data[i].punktzahl / ((end - start)/1000)) * 10) /10;
       const duration = Math.round((end - start)/1000);
@@ -40,7 +38,6 @@ export class WelcomePageComponent {
       };
       weightedData.push(weightedScore);
       weightedData.sort((a, b) => b.weightedPoints - a.weightedPoints);
-      console.log(weightedData);
       
       this.highscores = weightedData;
     }
@@ -48,9 +45,7 @@ export class WelcomePageComponent {
   }
 
   startGame() {
-    const category = this.selectedCategory;
-    console.log(category);
-    
+    const category = this.selectedCategory;    
     if(!category) {
         alert('Please select a category.');
         return;

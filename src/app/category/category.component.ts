@@ -34,14 +34,12 @@ categories: any = [];
   updateScore(score: any) {
     const url = `https://backendwerwirdmillionaer.azurewebsites.net/categories/${score.id}`;
     this.http.put(url, score).subscribe(() => {
-      console.log('Category updated successfully');
     });
   }
   deleteScore(id: any) {
     const url = `https://backendwerwirdmillionaer.azurewebsites.net/categories/${id}`;
     this.http.delete(url).subscribe(() => {
       this.categories.splice(this.categories.indexOf(id), 1);
-      console.log('Category deleted successfully');
     });
   }
 
@@ -52,7 +50,6 @@ categories: any = [];
   saveCategory() {
     
       this.http.post('https://backendwerwirdmillionaer.azurewebsites.net/categories', this.newCategory).subscribe(() => {
-        console.log('Question updated successfully');
       });
       this.categories.push(this.newCategory);
     
