@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  //Check authorization
   ngOnInit(): void {
     const authorized = localStorage.getItem('authorized');
     this.authorized = authorized ? true : false;

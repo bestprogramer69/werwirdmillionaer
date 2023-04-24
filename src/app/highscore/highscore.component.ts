@@ -11,8 +11,10 @@ import { DatePipe } from '@angular/common';
 })
 export class HighscoreComponent {
   highscores: any = [];
+  categories: any = [];
   editingIndex: number = -1;
 
+  //get request for game and add weightedpoints and duration
   ngOnInit() {
     this.http.get<Highscore[]>('https://backendwerwirdmillionaer.azurewebsites.net/game').subscribe(data => {              
       const weightedData = [];
@@ -33,10 +35,25 @@ export class HighscoreComponent {
       this.highscores = weightedData;
     }    
   });
+
+  this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe(data => {
+      this.categories = data;
+    });
   }
 
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
+
+  categorybyId(id: any){
+    if (this.categories === undefined) {
+      this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe(data => {
+        this.categories = data;
+      });
+    }
+    const category = this.categories && this.categories.find((category:any) => category.id === id);
+    return category;
+  }
+  //delete request for game
   deleteScore(id: any) {    
     const url = `https://backendwerwirdmillionaer.azurewebsites.net/game/${id}`;
     this.http.delete(url).subscribe(() => {

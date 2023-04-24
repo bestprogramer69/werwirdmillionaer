@@ -14,12 +14,17 @@ export class LoginComponent {
   user!: string;
   password!: string;
 
+  //check login
   login() {
-    const hash = SHA256(this.password).toString();
+    //hash login
+    const hash = SHA256(this.password).toString();      
+    //get hashed login from database
     this.http.get(`https://backendwerwirdmillionaer.azurewebsites.net/login/${this.user}`).subscribe((data: any) => {     
+      console.log(data);
       if(!data){
         alert('login not existing')
         console.log('login not existing');
+        return;
       }
       else if ( data[0].password !== hash) {
         alert('incorrect login')
@@ -27,7 +32,9 @@ export class LoginComponent {
         return;
       }
 
-      
+      //set to authorized      
+      console.log('login correct');
+
       localStorage.setItem('authorized', 'true');
       this.router.navigate(['/', 'dashboard']);
     }); 

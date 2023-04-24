@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HeaderComponent } from '../header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { WelcomePageComponent } from './welcome-page.component';
+import { FormsModule } from '@angular/forms';
 
 describe('WelcomePageComponent', () => {
   let component: WelcomePageComponent;
@@ -8,7 +11,8 @@ describe('WelcomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomePageComponent ]
+      imports: [ HttpClientTestingModule, RouterTestingModule, FormsModule ], 
+      declarations: [ WelcomePageComponent, HeaderComponent  ]
     })
     .compileComponents();
 

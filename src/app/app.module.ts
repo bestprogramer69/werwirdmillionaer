@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -14,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { HighscoreComponent } from './highscore/highscore.component';
 import { CategoryComponent } from './category/category.component';
 import { QuestionsComponent } from './questions/questions.component';
+
 
 
 @NgModule({

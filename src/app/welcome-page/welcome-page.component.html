@@ -36,7 +36,7 @@
             <tr>
                 <th>Place</th>
                 <th>Weighted Points</th>
-                <th>Category ID</th>
+                <th>Category</th>
                 <th>Player</th>
                 <th>Start Time</th>
                 <th>End Time</th>
@@ -48,7 +48,7 @@
             <tr *ngFor="let highscore of highscores.slice(0,5) as any; let i = index;">
                 <td>{{i +1}}</td>
                 <td>{{highscore.weightedPoints}}</td>
-                <td>{{ highscore.kategorien_id }}</td>
+                <td>{{categorybyId(highscore.kategorien_id).name }}</td>
                 <td>{{ highscore.spieler}}</td>
                 <td>{{ highscore.start | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
                 <td>{{ highscore.ende | date: 'dd.MM.yyyy HH:mm:ss' }}</td>

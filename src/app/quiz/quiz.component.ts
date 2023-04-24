@@ -173,13 +173,11 @@ if (availableQuestionsString) {
       }).subscribe(() => {
       });
       this.renderer.setStyle(button, 'background-color', 'green');
+      this.playerdata.punktzahl += 30;
       if (this.availableQuestions.length === 0) {        
-
-        this.playerdata.punktzahl += 30;
         this.win = true;
         localStorage.setItem('gameStarted', `${false}`);
       } else {
-        this.playerdata.punktzahl += 30;
         this.nextenabled = true;
       }
       localStorage.setItem('playerdata',  JSON.stringify(this.playerdata));

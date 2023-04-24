@@ -19,7 +19,7 @@ export class HeaderComponent {
   clickedNavItem: string = window.sessionStorage.getItem('clickedNavItem') || 'Highscore';
   authorized: boolean = false;
 
-
+//check authorization
   ngOnInit() {
     this.navItemSelected.emit(this.clickedNavItem);
     const authorized = localStorage.getItem('authorized');
@@ -29,6 +29,7 @@ export class HeaderComponent {
   
    }
 
+   //set navbar to the clicked Item
    onNavItemClick(navItem: string) {
     this.clickedNavItem = navItem;
     window.sessionStorage.setItem('clickedNavItem', navItem);
