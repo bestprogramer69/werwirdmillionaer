@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HighscoreComponent } from './highscore.component';
+
 
 describe('HighscoreComponent', () => {
   let component: HighscoreComponent;
@@ -8,6 +9,7 @@ describe('HighscoreComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ], 
       declarations: [ HighscoreComponent ]
     })
     .compileComponents();

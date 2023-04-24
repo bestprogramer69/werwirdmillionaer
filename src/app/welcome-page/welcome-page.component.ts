@@ -76,6 +76,15 @@ weightedPoints(score: any): number {
   const weightedPoints = score.punktzahl / duration;
   return weightedPoints;
 }
+categorybyId(id: any){
+  if (this.categories === undefined) {
+    this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe(data => {
+      this.categories = data;
+    });
+  }
+  const category = this.categories && this.categories.find((category:any) => category.id === id);
+  return category;
+}
 }
 
 interface Highscore {

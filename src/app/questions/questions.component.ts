@@ -9,8 +9,6 @@ import { concatMap } from 'rxjs/operators';
   styleUrls: ['./questions.component.css']
 })
 
-
-
 export class QuestionsComponent {
   questions: any;
   categories: any;
@@ -29,17 +27,20 @@ export class QuestionsComponent {
   addingQuestion: boolean = false;
   savingQuestion: boolean = false;;
 
+  //get request for answers
   getanswers(){
     this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/answer').subscribe((response) => {
       this.answers = response;
     });
   }
+  //get request for categories
   getCategories(){
   this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/categories').subscribe((response) => {
       this.categories = response;
     });
   }
 
+  //get request for questions
     getQuestions(){
       this.http.get('https://backendwerwirdmillionaer.azurewebsites.net/questions').subscribe(data => {
         this.questions = data;
@@ -53,10 +54,12 @@ export class QuestionsComponent {
    
   }
 
+  //set editing to true
   startEditing(index: number) {
     this.editingIndex = index;
   }
 
+  //update of question and asnwers
   saveEditing(score: any) {
     const editedQuestion = Object.assign({}, score);
     const urlQuestion = `https://backendwerwirdmillionaer.azurewebsites.net/questions/${editedQuestion.id}`;
@@ -84,6 +87,7 @@ export class QuestionsComponent {
     this.editingIndex = -1;
   }
   
+  //delete question and answers.
   deleteScore(score: any) {
     const editedQuestion: any = Object.assign({}, score);
     const id = editedQuestion.id;

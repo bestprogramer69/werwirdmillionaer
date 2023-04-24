@@ -1,30 +1,34 @@
-<table>
-    <thead>
-        <tr>
-            <th>Place</th>
-            <th>Weighted Points</th>
-            <th>Category ID</th>
-            <th>Player</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Duration</th>
-            <th>Score</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let highscore of highscores let i = index;">
-            <td>{{i +1}}</td>
-            <td>{{highscore.weightedPoints}}</td>
-            <td>{{ highscore.kategorien_id }}</td>
-            <td>{{ highscore.spieler}}</td>
-            <td>{{ highscore.start | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
-            <td>{{ highscore.ende | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
-            <td>{{ highscore.duration }}s</td>
-            <td>{{ highscore.punktzahl }}</td>
-            <td>
-                <button (click)="deleteScore(highscore.id)"><i class="fas fa-trash-alt"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <h1 style="text-align: center;">Highscores</h1>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Place</th>
+                <th>Weighted Points</th>
+                <th>Category</th>
+                <th>Player</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Duration</th>
+                <th>Score</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let highscore of highscores let i = index;">
+                <td>{{i +1}}</td>
+                <td>{{highscore.weightedPoints}}</td>
+                <td>{{categorybyId(highscore.kategorien_id).name }}</td>
+                <td>{{ highscore.spieler}}</td>
+                <td>{{ highscore.start | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+                <td>{{ highscore.ende | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+                <td>{{ highscore.duration }}s</td>
+                <td>{{ highscore.punktzahl }}</td>
+                <td>
+                    <button (click)="deleteScore(highscore.id)"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

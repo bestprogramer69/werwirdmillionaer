@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ms-auto">
         <h3 id="logo">WWM</h3>
     </a>
-    <h3>{{ pageTitle}}</h3>
-
-    <ul *ngIf="authorized && dashboard" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <h3>{{ pageTitle }}</h3>
+    <ul *ngIf="authorized && dashboard" class="nav col-12 col-md-auto mb-2 justify-content-center justify-content-md-between mb-md-0">
         <li>
             <a class="nav-link px-2" [ngClass]="{'link-secondary': !adminNav1Clicked, 'link-dark': adminNav1Clicked}" (click)="onNavItemClick('Highscore')">Highscore</a>
         </li>
-        <li><a class="nav-link px-2" [ngClass]="{'link-secondary': !adminNav2Clicked, 'link-dark': adminNav2Clicked}" (click)="onNavItemClick('Questions')">Questions</a></li>
-        <li><a class="nav-link px-2 " [ngClass]="{ 'link-secondary': !adminNav3Clicked, 'link-dark': adminNav3Clicked} " (click)="onNavItemClick( 'Categories') ">Categories</a></li>
+        <li>
+            <a class="nav-link px-2" [ngClass]="{'link-secondary': !adminNav2Clicked, 'link-dark': adminNav2Clicked}" (click)="onNavItemClick('Questions')">Questions</a>
+        </li>
+        <li>
+            <a class="nav-link px-2" [ngClass]="{'link-secondary': !adminNav3Clicked, 'link-dark': adminNav3Clicked}" (click)="onNavItemClick('Categories')">Categories</a>
+        </li>
     </ul>
     <ul *ngIf="authorized && dashboard === false" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
             <a class="nav-link px-2" href="/dashboard">Dashboard</a>
         </li>
     </ul>
-    <div class="col-md-3 text-end ">
-        <button *ngIf="authorized; else loginButton " type="button " (click)="logOut() " class="btn btn-outline-primary me-2 ">Logout</button>
+    <div class="col-md-3 text-end me-auto">
+        <button *ngIf="authorized; else loginButton" type="button" (click)="logOut()" class="btn btn-outline-primary me-2">Logout</button>
 
         <ng-template #loginButton>
-            <button type="button " (click)="goToLoginPage() " class="btn btn-outline-primary me-2 ">Login</button>
+            <button type="button" (click)="goToLoginPage()" class="btn btn-outline-primary me-2">Login</button>
         </ng-template>
-
     </div>
 </header>
-
 
 </html>
